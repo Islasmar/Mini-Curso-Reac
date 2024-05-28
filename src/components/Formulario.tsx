@@ -1,12 +1,23 @@
 import { ChangeEvent, useState } from "react";
 import { useForm } from "../hooks/useForm";
 
+
+interface FormData{
+email: string,
+nombre: string,
+edad: number
+
+}
+
+
 export const Formulario = () => {
 
-  const {formulario,handleChange} = useForm({
+  const {nombre, email, edad,handleChange, formulario} = useForm<FormData>({
     email: 'marianoislas@gmail.com',
-    nombre: 'Mariano Islas'
+    nombre: 'Mariano Islas',
+    edad: 19
   });
+
 
   // const [formulario, setFormulario] = useState(
   //   {
@@ -42,6 +53,16 @@ export const Formulario = () => {
             className="form-control"
             name="nombre"
             value={formulario.nombre}
+            onChange={handleChange}/>
+        </div>
+
+        
+        <div className="mb-3">
+            <label className="form-label">Edad:</label>
+            <input type="number"
+            className="form-control"
+            name="edad"
+            value={formulario.edad}
             onChange={handleChange}/>
         </div>
 
